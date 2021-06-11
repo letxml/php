@@ -19,11 +19,12 @@ function let_xml($url, $callback = null, $associative = false)
         $urls[] = $url;
     }
 
+    $file = "";
     foreach($urls as $url){
         if (!file_exists($url)) {
             throw new Exception("Url: " . $url . " not exist");
         }
-        $file = file_get_contents($url, true);
+        $file .= file_get_contents($url, true);
     }
 
     if (is_callable($callback)) {
