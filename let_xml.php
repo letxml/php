@@ -14,10 +14,17 @@ function let_xml($url, $callback = null, $associative = false)
         throw new Exception("Url: " . $url . " is empty");
     }
 
-    if (!file_exists($url)) {
-        throw new Exception("Url: " . $url . " not exist");
+    $urls = [];
+    if (!is_array($url)){
+        $urls[] = $url;
     }
-    $file = file_get_contents($url, true);
+
+    foreach($urls as $url){
+        if (!file_exists($url)) {
+            throw new Exception("Url: " . $url . " not exist");
+        }
+        $file = file_get_contents($url, true);
+    }
 
     if (is_callable($callback)) {
         return $callback($file);
