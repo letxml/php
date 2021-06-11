@@ -24,9 +24,9 @@ function let_xml($url, $callback = null, $associative = false)
 
     $file = '';
     foreach($urls as $url_item){
-        if (!file_exists($url_item)) {
-            throw new Exception("Url: $url_item not exist");
-        }
+//        if (!file_exists($url_item)) {
+//            throw new Exception("Url: $url_item not exist");
+//        }
         $file .= file_get_contents($url_item, true);
         echo $url_item;
     }
