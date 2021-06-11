@@ -11,7 +11,7 @@
 function let_xml($url, $callback = null, $associative = false)
 {
     if (empty($url)){
-        throw new Exception("Url: " . $url . " is empty");
+        throw new Exception("Url: $url is empty");
     }
 
     $urls = [];
@@ -19,10 +19,10 @@ function let_xml($url, $callback = null, $associative = false)
         $urls[] = $url;
     }
 
-    $file = "";
+    $file = '';
     foreach($urls as $url){
         if (!file_exists($url)) {
-            throw new Exception("Url: " . $url . " not exist");
+            throw new Exception("Url: $url not exist");
         }
         $file .= file_get_contents($url, true);
     }
